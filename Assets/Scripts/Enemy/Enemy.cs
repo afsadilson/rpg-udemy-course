@@ -1,18 +1,26 @@
+using System;
 using UnityEngine;
 
 public class Enemy : Entity
 {
     [SerializeField] protected LayerMask whatIsPlayer;
 
+    [Header("Stunned info")]
+    public float stunningDuration;
+    public Vector2 stunningDirection;
+    protected bool canBeStunned;
+    [SerializeField] protected GameObject counterImage;
+
     [Header("Move info")]
     public float moveSpeed;
     public float idleTime;
-
+    public float battleTime;
+    
     [Header("Attack info")]
     public float attackDistance;
     public float attackCooldown;
     [HideInInspector] public float lastTimeAttacked;
-    public float battleTime;
+    
     
     public EnemyStateMachine enemyStateMachine { get; private set; }
 
@@ -30,6 +38,24 @@ public class Enemy : Entity
         base.Update();
         
         enemyStateMachine.currentState.Update();
+    }
+
+    public virtual void OpenCounterAttackWindow() {
+        canBeStunned = true;
+        counterImage.SetActive(true);
+    }
+
+    public virtual void CloseCounterAttackWindow() {
+        canBeStunned = false;
+        counterImage.SetActive(false);
+    }
+
+    public virtual bool CanBeStunned() {
+        if (canBeStunned) {
+            CloseCounterAttackWindow();
+            return true;
+        }
+        return false;
     }
 
     public virtual RaycastHit2D IsPlayerDetected() => Physics2D.Raycast(wallCheck.position, Vector2.right * facingDir, 5, whatIsPlayer);

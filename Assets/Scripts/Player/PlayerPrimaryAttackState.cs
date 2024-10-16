@@ -25,6 +25,7 @@ public class PlayerPrimaryAttackState : PlayerState
 
         player.anim.SetInteger("ComboCounter", comboCounter);
 
+        xInput = Input.GetAxisRaw("Horizontal");
         float attackDir = xInput != 0 ? xInput : player.facingDir;
         player.SetVelocity(player.attackMoviments[comboCounter].x * attackDir, player.attackMoviments[comboCounter].y);
     }
