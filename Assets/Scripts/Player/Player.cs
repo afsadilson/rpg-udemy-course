@@ -16,8 +16,6 @@ public class Player : Entity
     public float jumpForce;
 
     [Header("Dash Info")]
-    [SerializeField] private float dashCooldown;
-    private float dashUsageTimer;
     public float dashSpeed;
     public float dashDuration;
     public float dashDir { get; private set; }
@@ -77,11 +75,10 @@ public class Player : Entity
     }
 
     private void CheckForDashInput() {
-        dashUsageTimer -= Time.deltaTime;
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && dashUsageTimer < 0 && !IsWallDetected()) {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dash.CanUseSkill() && !IsWallDetected()) {
+
             dashDir = Input.GetAxisRaw("Horizontal");
-            dashUsageTimer = dashCooldown;
             
             if (dashDir == 0)
                 dashDir = facingDir;
