@@ -20,6 +20,8 @@ public class Player : Entity
     public float dashDuration;
     public float dashDir { get; private set; }
 
+    public SkillManager skill { get; private set; }
+
     #region States
     public PlayerStateMachine stateMachine { get; private set; }
     public PlayerIdleState idleState { get; private set; }
@@ -54,6 +56,8 @@ public class Player : Entity
         base.Start();
 
         stateMachine.Initialize(idleState);
+
+        skill = SkillManager.instance;
     }
 
     protected override void Update()
@@ -76,7 +80,7 @@ public class Player : Entity
 
     private void CheckForDashInput() {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && SkillManager.instance.dash.CanUseSkill() && !IsWallDetected()) {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && skill.dash.CanUseSkill() && !IsWallDetected()) {
 
             dashDir = Input.GetAxisRaw("Horizontal");
             
