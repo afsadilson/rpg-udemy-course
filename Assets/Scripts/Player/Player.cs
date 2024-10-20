@@ -10,6 +10,7 @@ public class Player : Entity
     public bool isBusy { get; private set; }
     public Vector2[] attackMoviments;
     public float counterAttackDuration = .2f;
+    public float swordReturnImpact;
 
     [Header("Move Info")]
     public float moveSpeed = 7f;
@@ -21,6 +22,7 @@ public class Player : Entity
     public float dashDir { get; private set; }
 
     public SkillManager skill { get; private set; }
+    public GameObject sword { get; private set; } // throwing sword
 
     #region States
     public PlayerStateMachine stateMachine { get; private set; }
@@ -33,6 +35,8 @@ public class Player : Entity
     public PlayerWallJumpState wallJumpState { get; private set; }
     public PlayerPrimaryAttackState primaryAttackState { get; private set; }
     public PlayerCounterAttackState counterAttackState { get; private set; }
+    public PlayerAimSwordState aimSwordState { get; private set; }
+    public PlayerCatchSwordState catchSwordState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -47,8 +51,12 @@ public class Player : Entity
         dashState = new PlayerDashState(this, stateMachine, "Dash");
         wallSlideState = new PlayerWallSlideState(this, stateMachine, "WallSlide");
         wallJumpState = new PlayerWallJumpState(this, stateMachine, "Jump");
+        
         primaryAttackState = new PlayerPrimaryAttackState(this, stateMachine, "Attack");
         counterAttackState = new PlayerCounterAttackState(this, stateMachine, "CounterAttack");
+        
+        aimSwordState = new PlayerAimSwordState(this, stateMachine, "AimSword");
+        catchSwordState = new PlayerCatchSwordState(this, stateMachine, "CatchSword");
     }
 
     protected override void Start()
@@ -68,14 +76,23 @@ public class Player : Entity
         CheckForDashInput();
     }
 
+    public void AssignNewSword(GameObject _newSword) {
+        sword = _newSword;
+    }
+
+    public void CatchTheSword() {
+        stateMachine.ChangeState(catchSwordState);
+        Destroy(sword);
+    }
+
     public virtual void AnimationTrigger() {
         stateMachine.currentState.AnimationFinishTrigger();
     }
 
-    public IEnumerable BusyFor(float _seconds) {
+    public IEnumerator BusyFor(float _seconds) {
         isBusy = true;
         yield return new WaitForSeconds(_seconds);
-        isBusy = true;
+        isBusy = false;
     }
 
     private void CheckForDashInput() {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : Entity
@@ -13,6 +14,7 @@ public class Enemy : Entity
 
     [Header("Move info")]
     public float moveSpeed;
+    public float defaultMoveSpeed;
     public float idleTime;
     public float battleTime;
     
@@ -28,6 +30,7 @@ public class Enemy : Entity
         base.Awake();
 
         enemyStateMachine = new EnemyStateMachine();
+        defaultMoveSpeed = moveSpeed;
     }
 
     protected override void Start() {
@@ -40,6 +43,25 @@ public class Enemy : Entity
         enemyStateMachine.currentState.Update();
     }
 
+    public virtual void FreezeTime(bool _timeFrozen) {
+        if (_timeFrozen) {
+            moveSpeed = 0;
+            anim.speed = 0;
+        } else {
+            moveSpeed = defaultMoveSpeed;
+            anim.speed = 1;
+        }
+    }
+
+    protected virtual IEnumerator FreezeTimeFor(float _seconds) {
+        FreezeTime(true);
+
+        yield return new WaitForSeconds(_seconds);
+
+        FreezeTime(false);
+    }
+
+    #region Counter Attack Window
     public virtual void OpenCounterAttackWindow() {
         canBeStunned = true;
         counterImage.SetActive(true);
@@ -49,6 +71,7 @@ public class Enemy : Entity
         canBeStunned = false;
         counterImage.SetActive(false);
     }
+    #endregion
 
     public virtual bool CanBeStunned() {
         if (canBeStunned) {
