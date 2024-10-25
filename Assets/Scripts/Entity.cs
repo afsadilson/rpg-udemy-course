@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using NUnit.Framework.Constraints;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ public class Entity : MonoBehaviour
     
     #region Components
     public Rigidbody2D rb { get; private set; }
+    public SpriteRenderer sr { get; private set; }
     public Animator anim { get; private set; }
     public EntityFX fx { get; private set; }
     #endregion
@@ -33,6 +35,7 @@ public class Entity : MonoBehaviour
     }
 
     protected virtual void Start() {
+        sr = GetComponentInChildren<SpriteRenderer>();
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         fx = GetComponent<EntityFX>();
@@ -98,4 +101,12 @@ public class Entity : MonoBehaviour
         }
     }
     #endregion
+
+    public void MakeTransparent(bool _transparent) {
+        if (_transparent) {
+            sr.color = Color.clear;
+        } else {
+            sr.color = Color.white;
+        }
+    }
 }
