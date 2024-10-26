@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Clone_Skill : Skill
@@ -10,6 +11,7 @@ public class Clone_Skill : Skill
 
     [SerializeField] private bool createCloneOnDashStart;
     [SerializeField] private bool createCloneOnDashOver;
+    [SerializeField] private bool canCreateCloneOnCounterAttack;
 
     public void CreateClone(Transform _clonePosition, Vector3 _offset = default(Vector3)) {
         GameObject newClone = Instantiate(clonePrefab);
@@ -25,5 +27,15 @@ public class Clone_Skill : Skill
     public void CreateCloneOnDashOver() {
         if (createCloneOnDashOver)
             CreateClone(player.transform, Vector3.zero);
+    }
+
+    public void CreateCloneOnCounterAttack(Transform _enemyTransform) {
+        if (canCreateCloneOnCounterAttack)
+            StartCoroutine(CreateCloneWithDelay(_enemyTransform, new Vector3(2 * player.facingDir, 0)));
+    }
+
+    private IEnumerator CreateCloneWithDelay(Transform _transform, Vector3 _offset) {
+        yield return new WaitForSeconds(.4f);
+            CreateClone(_transform, _offset);
     }
 }
