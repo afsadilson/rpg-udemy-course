@@ -11,6 +11,7 @@ public class Crystal_Skill_Controller : MonoBehaviour
     private bool canExplode;
     private bool canMoveToEnemy;
     private float moveSpeed;
+    [SerializeField] private LayerMask whatIsEnemy;
     
 
     private void Awake() {
@@ -45,6 +46,13 @@ public class Crystal_Skill_Controller : MonoBehaviour
         moveSpeed = _moveSpeed;
         growSpeed = _growSpeed;
         closestEnemy = _closestEnemy;
+    }
+
+    public void ChooseRandomEnemy() {
+        float radius = SkillManager.instance.blackhole.GetBlackholeRadius();
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius, whatIsEnemy);
+        if (colliders.Length > 0)
+            closestEnemy = colliders[Random.Range(0, colliders.Length)].transform;
     }
 
     public void SelfDestroy() => Destroy(gameObject);

@@ -33,10 +33,7 @@ public class Crystal_Skill : Skill
         if (CanUseMultiCrystals()) return;
 
         if (currentCrystal == null) {
-            currentCrystal = Instantiate(crystalPrefab, player.transform.position, Quaternion.identity);
-
-            Crystal_Skill_Controller currentCrystalScript = currentCrystal.GetComponent<Crystal_Skill_Controller>();
-            currentCrystalScript.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed, growSpeed, FindClosestEnemy(currentCrystal.transform));
+            CreateCrystal();
         } else {
             if (canMoveToEnemy) return;
 
@@ -52,6 +49,15 @@ public class Crystal_Skill : Skill
             }
         }
     }
+
+    public void CreateCrystal() {
+        currentCrystal = Instantiate(crystalPrefab, player.transform.position, Quaternion.identity);
+
+        Crystal_Skill_Controller currentCrystalScript = currentCrystal.GetComponent<Crystal_Skill_Controller>();
+        currentCrystalScript.SetupCrystal(crystalDuration, canExplode, canMoveToEnemy, moveSpeed, growSpeed, FindClosestEnemy(currentCrystal.transform));
+    }
+
+    public void CurrentCrystalChooseRandomTarget() => currentCrystal.GetComponent<Crystal_Skill_Controller>().ChooseRandomEnemy();
 
     private bool CanUseMultiCrystals() {
         if (canUseMultiCrystal) {
