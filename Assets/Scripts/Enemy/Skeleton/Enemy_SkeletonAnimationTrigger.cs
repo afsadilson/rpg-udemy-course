@@ -10,8 +10,11 @@ public class Enemy_SkeletonAnimationFinishTrigger: MonoBehaviour
 
     private void AttackTrigger() {
         Collider2D collider = Physics2D.OverlapCircle(enemy.attackCheck.position, enemy.attackCheckRadius);
-        if (collider.GetComponent<Player>() != null)
-            collider.GetComponent<Player>().Damage();
+        if (collider.GetComponent<Player>() != null) {
+            PlayerStats _target = collider.GetComponent<PlayerStats>();
+            
+            enemy.stats.DoDamage(_target);
+        }
     }
 
     private void OpenCounterAttackWindow() => enemy.OpenCounterAttackWindow();

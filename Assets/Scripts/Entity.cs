@@ -25,6 +25,7 @@ public class Entity : MonoBehaviour
     public SpriteRenderer sr { get; private set; }
     public Animator anim { get; private set; }
     public EntityFX fx { get; private set; }
+    public CharacterStats stats { get; private set; }
     #endregion
 
     public int facingDir { get; private set; } = 1;
@@ -39,13 +40,14 @@ public class Entity : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         fx = GetComponent<EntityFX>();
+        stats = GetComponent<CharacterStats>();
     }
 
     protected virtual void Update() {
         
     }
 
-    public virtual void Damage() {
+    public virtual void DamageEffect() {
         Debug.Log(gameObject.name + " was damaged");
         fx.StartCoroutine("FlashFX");
         StartCoroutine("HitKnockback");
