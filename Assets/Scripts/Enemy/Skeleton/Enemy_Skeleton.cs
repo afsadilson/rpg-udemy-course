@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy_Skeleton : Enemy
@@ -9,6 +10,7 @@ public class Enemy_Skeleton : Enemy
     public SkeletonBattleState battleState { get; private set; }
     public SkeletonAttackState attackState { get; private set; }
     public SkeletonStunnedState stunnedState { get; private set; }
+    public SkeletonDeadState deadState { get; private set; }
     #endregion
 
     protected override void Awake()
@@ -20,6 +22,7 @@ public class Enemy_Skeleton : Enemy
         battleState = new SkeletonBattleState(this, enemyStateMachine, "Move", this);
         attackState = new SkeletonAttackState(this, enemyStateMachine, "Attack", this);
         stunnedState = new SkeletonStunnedState(this, enemyStateMachine, "Stunned", this);
+        deadState = new SkeletonDeadState(this, enemyStateMachine, "Placeholder", this);
     }
 
 
@@ -40,5 +43,12 @@ public class Enemy_Skeleton : Enemy
             return true;
         }
         return false;
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+
+        enemyStateMachine.ChangeState(deadState);
     }
 }

@@ -26,6 +26,5 @@ public class CharacterStats: MonoBehaviour {
   }
 
   protected virtual void Die() {
-    Debug.Log("YOU DIED");
   }
 }

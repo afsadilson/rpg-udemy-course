@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyStats: CharacterStats {
 
-    Enemy enemy;
+    private Enemy enemy;
 
     protected override void Start()
     {
@@ -17,5 +17,12 @@ public class EnemyStats: CharacterStats {
         base.TakeDamage(_damage);
 
         enemy.DamageEffect();
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+
+        enemy.Dead();
     }
 }

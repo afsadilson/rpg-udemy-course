@@ -26,6 +26,7 @@ public class Entity : MonoBehaviour
     public Animator anim { get; private set; }
     public EntityFX fx { get; private set; }
     public CharacterStats stats { get; private set; }
+    public CapsuleCollider2D cd { get; private set; }
     #endregion
 
     public int facingDir { get; private set; } = 1;
@@ -41,6 +42,7 @@ public class Entity : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         fx = GetComponent<EntityFX>();
         stats = GetComponent<CharacterStats>();
+        cd = GetComponent<CapsuleCollider2D>();
     }
 
     protected virtual void Update() {
@@ -110,5 +112,9 @@ public class Entity : MonoBehaviour
         } else {
             sr.color = Color.white;
         }
+    }
+
+    public virtual void Dead() {
+
     }
 }
