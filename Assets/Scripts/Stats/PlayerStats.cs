@@ -1,28 +1,25 @@
-using System;
 using UnityEngine;
 
-public class EnemyStats: CharacterStats {
+public class PlayerStats: CharacterStats {
 
-    private Enemy enemy;
+  private Player player;
 
     protected override void Start()
     {
         base.Start();
 
-        enemy = GetComponent<Enemy>();
+        player = GetComponent<Player>();
     }
 
     public override void TakeDamage(int _damage)
     {
         base.TakeDamage(_damage);
-
-        enemy.DamageEffect();
     }
 
     protected override void Die()
     {
         base.Die();
 
-        enemy.Dead();
+        player.Dead();
     }
 }

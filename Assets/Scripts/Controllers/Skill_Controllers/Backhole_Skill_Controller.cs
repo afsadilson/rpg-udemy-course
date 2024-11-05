@@ -79,7 +79,7 @@ public class Blackhole_Skill_Controller : MonoBehaviour
         
         if (playerCanDisapear) {
             playerCanDisapear = false;
-            PlayerManager.instance.player.MakeTransparent(true);
+            PlayerManager.instance.player.fx.MakeTransparent(true);
         }
     }
 
@@ -139,7 +139,6 @@ public class Blackhole_Skill_Controller : MonoBehaviour
 
     private void CreateHotKey(Collider2D collision) {
         if (keyCodeList.Count <= 0) {
-            Debug.LogWarning("keyCodeList is empty on Blackhole_Skill_Controller");
             return;
         }
 

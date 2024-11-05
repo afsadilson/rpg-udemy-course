@@ -372,7 +372,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.741
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -604,12 +604,12 @@ Transform:
   m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1087407987}
   - {fileID: 1745992417}
   - {fileID: 1848158401}
   - {fileID: 1594779175}
   - {fileID: 1748958437}
   - {fileID: 941729404}
-  - {fileID: 1087407987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &628151509
@@ -652,6 +652,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitMat: {fileID: 2100000, guid: 6b191462a5c7d448d9071d39d214ba4a, type: 2}
+  chillColor:
+  - {r: 0.60784316, g: 0.83137256, b: 1, a: 1}
+  - {r: 0.60784316, g: 0.83137256, b: 1, a: 1}
+  igniteColor:
+  - {r: 0.9843137, g: 0.29411766, b: 0.29411766, a: 1}
+  - {r: 0.9529412, g: 0.7529412, b: 0.7529412, a: 1}
+  shockColor:
+  - {r: 1, g: 0.8901961, b: 0.38431373, a: 1}
+  - {r: 0.94509804, g: 0.8745098, b: 0.54901963, a: 1}
 --- !u!114 &628151511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -701,14 +710,17 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   iceDamage:
-    baseValue: 0
+    baseValue: 5
     modifiers: 
   lightningDamage:
     baseValue: 0
     modifiers: 
-  isIgnited: 0
+  isIgnited: 1
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
+  shockStrikePrefab: {fileID: 1955622118819677462, guid: 57abaddc6e75443d4921d8424d1cee42, type: 3}
+  shockDamage: 0
   currentHealth: 0
 --- !u!70 &628151512
 CapsuleCollider2D:
@@ -1039,37 +1051,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1074904284
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1074904285}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1074904285
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074904284}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.439263, y: 3.9296346, z: -0.108913586}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1087407986
 GameObject:
   m_ObjectHideFlags: 0
@@ -11840,7 +11821,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.741
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12442,6 +12423,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitMat: {fileID: 2100000, guid: 6b191462a5c7d448d9071d39d214ba4a, type: 2}
+  chillColor:
+  - {r: 0.60784316, g: 0.83137256, b: 1, a: 1}
+  - {r: 0.60784316, g: 0.83137256, b: 1, a: 1}
+  igniteColor:
+  - {r: 0.9843137, g: 0.29411766, b: 0.29411766, a: 1}
+  - {r: 0.9529412, g: 0.7529412, b: 0.7529412, a: 1}
+  shockColor:
+  - {r: 1, g: 0.8901961, b: 0.38431373, a: 1}
+  - {r: 0.94509804, g: 0.8745098, b: 0.54901963, a: 1}
 --- !u!114 &1894362903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12461,7 +12451,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   intelligence:
-    baseValue: 0
+    baseValue: 1
     modifiers: 
   vitality:
     baseValue: 5
@@ -12491,7 +12481,7 @@ MonoBehaviour:
     baseValue: 0
     modifiers: 
   iceDamage:
-    baseValue: 0
+    baseValue: 5
     modifiers: 
   lightningDamage:
     baseValue: 0
@@ -12499,6 +12489,9 @@ MonoBehaviour:
   isIgnited: 0
   isChilled: 0
   isShocked: 0
+  ailmentsDuration: 4
+  shockStrikePrefab: {fileID: 1955622118819677462, guid: 57abaddc6e75443d4921d8424d1cee42, type: 3}
+  shockDamage: 0
   currentHealth: 0
 --- !u!1 &1965077394
 GameObject:
@@ -12687,7 +12680,6 @@ SceneRoots:
   - {fileID: 772312153}
   - {fileID: 250055187}
   - {fileID: 628151507}
+  - {fileID: 1687236535}
   - {fileID: 1202948161}
   - {fileID: 1641378961}
-  - {fileID: 1687236535}
-  - {fileID: 1074904285}
