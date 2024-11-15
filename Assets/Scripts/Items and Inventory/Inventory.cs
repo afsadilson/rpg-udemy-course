@@ -68,6 +68,8 @@ public class Inventory : MonoBehaviour
         
         equipment.Add(newItem);
         equipmentDictionary.Add(newEquipment, newItem);
+        newEquipment.AddModifiers();
+
         RemoveItem(_item);
     }
 
@@ -75,6 +77,7 @@ public class Inventory : MonoBehaviour
         if (equipmentDictionary.TryGetValue(oldEquipment, out InventoryItem value)) {
             equipment.Remove(value);
             equipmentDictionary.Remove(oldEquipment);
+            oldEquipment.RemoveModifiers();
         }
     }
 
