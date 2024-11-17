@@ -3,7 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Heal_Effect", menuName = "Data/Item Effect/Heal")]
 public class Heal_Effect : ItemEffect
 {
-    //[SerializeField] private GameObject iceAndFirePrefab;
     [Range(0f, 1f)]
     [SerializeField] private float healPercent;
 

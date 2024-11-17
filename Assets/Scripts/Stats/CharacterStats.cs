@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CharacterStats: MonoBehaviour {
@@ -98,7 +99,7 @@ public class CharacterStats: MonoBehaviour {
     totalDamage = CheckTargetArmor(_targetStats, totalDamage);
 
     _targetStats.TakeDamage(totalDamage);
-    // DoMagicalDamage(_targetStats);
+    DoMagicalDamage(_targetStats); // remove if you don't wanto to apply magic hit on primary attack
   }
 
   public virtual void TakeDamage(int _damage) {
@@ -109,6 +110,18 @@ public class CharacterStats: MonoBehaviour {
 
     if (currentHealth <= 0 && !isDead)
       Die();
+  }
+
+  public virtual void IncreaseStatBy(int _modifier, float _duration, Stat _statToModify) {
+    StartCoroutine(StatModifierCoroutine(_modifier, _duration, _statToModify));
+  }
+
+  private IEnumerator StatModifierCoroutine(int _modifier, float _duration, Stat _statToModify) {
+    _statToModify.AddModifier(_modifier);
+
+    yield return new WaitForSeconds(_duration);
+
+    _statToModify.RemoveModifier(_modifier);
   }
 
   public virtual void IncreaseHealthBy(int _amount) {
