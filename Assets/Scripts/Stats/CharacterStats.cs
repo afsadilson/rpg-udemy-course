@@ -56,7 +56,7 @@ public class CharacterStats: MonoBehaviour {
   private EntityFX fx;
 
   public int currentHealth;
-  protected bool isDead;
+  public bool isDead { get; private set; }
 
   public System.Action onHealthChanged;
   
