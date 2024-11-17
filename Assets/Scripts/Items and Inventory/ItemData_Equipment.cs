@@ -40,6 +40,7 @@ public class ItemData_Equipment : ItemData
 
     [Header("Item Effects")]
     public ItemEffect[] itemEffects;
+    public float itemCooldown;
 
     public void AddModifiers() {
         PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();

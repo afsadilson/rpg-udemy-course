@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11925814b7d4a46eab5a13374a65e74f, type: 3}
-  m_Name: Amulet of God
+  m_Name: Healing Flask
   m_EditorClassIdentifier: 
   itemType: 1
-  itemName: Amulet of God
-  icon: {fileID: -245851270, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
+  itemName: Healing Flask
+  icon: {fileID: -410334530, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 0
-  equipmentType: 2
+  equipmentType: 3
   strength: 0
   agility: 0
   intelligence: 0
@@ -24,13 +24,14 @@ MonoBehaviour:
   damage: 0
   criticalChance: 0
   criticalPower: 0
-  health: 20
+  health: 0
   armor: 0
   evasion: 0
-  magicResistance: 15
+  magicResistance: 0
   fireDamage: 0
   iceDamage: 0
-  lightningDamage: 10
+  lightningDamage: 0
   craftingMaterials: []
   itemEffects:
-  - {fileID: 11400000, guid: 0849c210c4bae4c0b8fe0186b9c421d2, type: 2}
+  - {fileID: 11400000, guid: 49ae0a0c5ab6a4b3ca83d20cb3583349, type: 2}
+  itemCooldown: 5

@@ -28,6 +28,9 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Transform equipmentSlotParent;
     private UI_EquipmentSlot[] equipmentSlot;
 
+    [Header("Items Cooldown")]
+    private float lastTimeUsedFlask;
+
     private void Awake() {
         if (instance == null) {
             instance = this;
@@ -204,5 +207,19 @@ public class Inventory : MonoBehaviour
         }
 
         return equipedItem;
+    }
+
+    public void UseFlask() {
+         ItemData_Equipment currentFlask = GetEquipmentByType(EquipmentType.Flask);
+
+         if (currentFlask == null)
+            return;
+
+         bool canUseFlask = Time.time > lastTimeUsedFlask + currentFlask.itemCooldown;
+
+         if (canUseFlask) {
+            currentFlask.Effect(null);
+            lastTimeUsedFlask = Time.time;
+         }
     }
 }
