@@ -38,6 +38,9 @@ public class ItemData_Equipment : ItemData
     [Header("Craft Requirements")]
     public List<InventoryItem> craftingMaterials;
 
+    [Header("Item Effects")]
+    public ItemEffect[] itemEffects;
+
     public void AddModifiers() {
         PlayerStats playerStats = PlayerManager.instance.player.GetComponent<PlayerStats>();
 
@@ -74,5 +77,11 @@ public class ItemData_Equipment : ItemData
         playerStats.fireDamage.RemoveModifier(fireDamage);
         playerStats.iceDamage.RemoveModifier(iceDamage);
         playerStats.lightningDamage.RemoveModifier(lightningDamage);
+    }
+
+    public void ExecuteItemEffect() {
+        foreach (var item in itemEffects) {
+            item.ExecuteEffect();
+        }
     }
 }
