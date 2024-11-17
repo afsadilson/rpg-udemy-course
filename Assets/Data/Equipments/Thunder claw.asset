@@ -32,4 +32,5 @@ MonoBehaviour:
   iceDamage: 0
   lightningDamage: 5
   craftingMaterials: []
-  itemEffects: []
+  itemEffects:
+  - {fileID: 11400000, guid: 0849c210c4bae4c0b8fe0186b9c421d2, type: 2}

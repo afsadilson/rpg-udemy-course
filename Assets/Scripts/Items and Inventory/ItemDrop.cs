@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-  [SerializeField] private int amountOfItems;
+  [SerializeField] private int possibleItemDrops;
   [SerializeField] private ItemData[] possibleDrop;
   private List<ItemData> dropList = new List<ItemData>();
 
@@ -16,6 +16,8 @@ public class ItemDrop : MonoBehaviour
         dropList.Add(possibleDrop[i]);
       }
     }
+
+    int amountOfItems = (dropList.Count < possibleItemDrops) ? dropList.Count : possibleItemDrops;
 
     for (int i = 0; i < amountOfItems; i++) {
        ItemData randomItem = dropList[Random.Range(0, dropList.Count - 1)];

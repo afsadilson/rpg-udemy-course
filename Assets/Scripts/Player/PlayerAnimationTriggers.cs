@@ -17,7 +17,7 @@ public class PlayerAnimationTriggers : MonoBehaviour
 
                 player.stats.DoDamage(_target);
 
-                Inventory.instance.GetEquipmentByType(EquipmentType.Weapon).ExecuteItemEffect();
+                Inventory.instance.GetEquipmentByType(EquipmentType.Weapon)?.Effect(_target.transform);
             }
         }
     }
