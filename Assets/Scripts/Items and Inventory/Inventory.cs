@@ -29,7 +29,8 @@ public class Inventory : MonoBehaviour
     private UI_EquipmentSlot[] equipmentSlot;
 
     [Header("Items Cooldown")]
-    private float lastTimeUsedFlask;
+    private float lastTimeUsedFlask = Mathf.NegativeInfinity;
+    private float lastTimeUsedArmor = Mathf.NegativeInfinity;
 
     private void Awake() {
         if (instance == null) {
@@ -221,5 +222,16 @@ public class Inventory : MonoBehaviour
             currentFlask.Effect(null);
             lastTimeUsedFlask = Time.time;
          }
+    }
+
+    public bool CanUseArmor() {
+        ItemData_Equipment currentArmor = GetEquipmentByType(EquipmentType.Armor);
+        
+        if (Time.time > lastTimeUsedArmor + currentArmor.itemCooldown) {
+            lastTimeUsedArmor = Time.time;
+            return true;
+        }
+
+        return false;
     }
 }

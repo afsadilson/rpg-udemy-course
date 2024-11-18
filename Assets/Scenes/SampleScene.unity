@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength:
-    baseValue: 2
+    baseValue: 10
     modifiers: 
   agility:
     baseValue: 0
@@ -408,6 +408,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 884c003b180c8475eacf7311441ade0b, type: 2}
   - {fileID: 11400000, guid: 43191a67b9161402d8c036e81a2b6742, type: 2}
   - {fileID: 11400000, guid: 8da0f4345df144b83923a3f5a9294a43, type: 2}
+  - {fileID: 11400000, guid: 7dbff9f64d5454a539275efe440669a6, type: 2}
+  - {fileID: 11400000, guid: 35e54d30c67fd4fd9bdecd421beb9893, type: 2}
   equipment: []
   inventory: []
   stash: []
@@ -2482,7 +2484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strength:
-    baseValue: 2
+    baseValue: 10
     modifiers: 
   agility:
     baseValue: 0

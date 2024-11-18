@@ -29,8 +29,10 @@ MonoBehaviour:
   evasion: 0
   magicResistance: 0
   fireDamage: 5
-  iceDamage: 5
+  iceDamage: 7
   lightningDamage: 0
   craftingMaterials: []
   itemEffects:
   - {fileID: 11400000, guid: 2ba9cffd06d5c46349b26b0a3ed09076, type: 2}
+  - {fileID: 11400000, guid: a39ce03e577f943db88a3d65c05a0cc9, type: 2}
+  itemCooldown: 0

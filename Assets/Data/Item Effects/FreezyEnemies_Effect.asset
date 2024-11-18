@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 215df6e5ebdd244cb811369beef68413, type: 3}
-  m_Name: Armor Buff
+  m_Script: {fileID: 11500000, guid: 6b7776de9c78c45a082dd8c6252dd1d8, type: 3}
+  m_Name: FreezyEnemies_Effect
   m_EditorClassIdentifier: 
-  buffType: 8
-  buffAmount: 50
-  buffDuration: 7
+  duration: 2

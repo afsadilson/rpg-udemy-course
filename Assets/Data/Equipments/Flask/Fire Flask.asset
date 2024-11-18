@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11925814b7d4a46eab5a13374a65e74f, type: 3}
   m_Name: Fire Flask
   m_EditorClassIdentifier: 
-  itemType: 0
-  itemName: 
-  icon: {fileID: 0}
+  itemType: 1
+  itemName: Fire Flask
+  icon: {fileID: 1073501139, guid: a9ca9a41598dd2e44b125928045c518f, type: 3}
   dropChance: 0
-  equipmentType: 0
+  equipmentType: 3
   strength: 0
   agility: 0
   intelligence: 0
@@ -32,5 +32,6 @@ MonoBehaviour:
   iceDamage: 0
   lightningDamage: 0
   craftingMaterials: []
-  itemEffects: []
+  itemEffects:
+  - {fileID: 11400000, guid: 800021de14f1d4f7791e5fd840bb97c5, type: 2}
   itemCooldown: 0

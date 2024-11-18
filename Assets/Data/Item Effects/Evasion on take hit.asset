@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 215df6e5ebdd244cb811369beef68413, type: 3}
-  m_Name: Armor Buff
+  m_Name: Evasion on take hit
   m_EditorClassIdentifier: 
-  buffType: 8
-  buffAmount: 50
-  buffDuration: 7
+  buffType: 9
+  buffAmount: 15
+  buffDuration: 1.5

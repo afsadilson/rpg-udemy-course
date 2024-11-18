@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215df6e5ebdd244cb811369beef68413, type: 3}
   m_Name: Fire Buff
   m_EditorClassIdentifier: 
-  buffType: 0
-  buffAmount: 0
-  buffDuration: 0
+  buffType: 11
+  buffAmount: 15
+  buffDuration: 5

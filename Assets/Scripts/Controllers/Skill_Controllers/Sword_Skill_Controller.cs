@@ -174,7 +174,7 @@ public class Sword_Skill_Controller : MonoBehaviour
 
     private void SwordSkillDamage(Enemy enemy) {
         player.stats.DoDamage(enemy.GetComponent<CharacterStats>());
-        enemy.StartCoroutine("FreezeTimeFor", freezeTimeDuration);
+        enemy.FreezeTimeFor(freezeTimeDuration);
 
         // Add equipped Amulet damage/effect
         ItemData_Equipment equipedAmulet = Inventory.instance.GetEquipmentByType(EquipmentType.Amulet);
